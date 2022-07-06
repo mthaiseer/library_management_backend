@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -28,5 +29,17 @@ public class Book extends BaseEntity{
     @JoinColumn
     @JsonIgnoreProperties("bookList")
     private Author author;
+
+
+    @OneToMany(mappedBy = "book")
+    @JsonIgnoreProperties("book")
+    private List<Transaction> transactionList;
+
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnoreProperties("bookList")
+    private Student student;
+
+
 
 }

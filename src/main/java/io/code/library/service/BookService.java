@@ -52,7 +52,15 @@ public class BookService {
         return bookObj;
     }
 
+    public Book findById(Long id){
+        return bookRepository.findById(id).orElse(null);
+    }
+
     public List<Book> findAllBooks() {
         return bookRepository.findAll();
+    }
+
+    public Book updateBook(Book book){
+        return bookRepository.save(book);
     }
 }
